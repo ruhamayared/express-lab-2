@@ -19,13 +19,9 @@ const randomResponse = ["It is certain", "It is decidedly so", "Without a doubt"
 
 const randomItem = randomResponse[Math.floor(Math.random()*randomResponse.length)]
 
-
 app.get('/magic/:phrase/', (request, response) => {
-    // response.send(`${request.params.phrase}` + `<h1>${randomResponse[request.params.indexOfrandomResponseArray]}</h1>`)
     response.send(`${request.params.phrase}` + `<h1>${randomItem}</h1>`)
 })
-
-
 
 
 app.listen(port, () => {
