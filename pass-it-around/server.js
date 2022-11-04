@@ -3,13 +3,18 @@ const app = express()
 
 const port = 3000
 
+app.get('/', (request, response) => {
+    response.send(`99 bottles of beer on the wall! <br/> <a href="http://localhost:3000/99" >Take one down, pass it around.</a>`)
+})
 
 app.get('/:number_of_bottles', (request, response) => {
-    let bottleLeft = parseInt(request.params.number_of_bottles) - parseInt(1)
+    let bottlesLeft = parseInt(request.params.number_of_bottles) - parseInt(1)
 
-    response.send(`${bottleLeft} bottles of beer on the wall! <br/> <a href="http://localhost:3000/${bottleLeft}" >Take one down, pass it around.</a>`)
-
-
+    if(bottlesLeft > 0){
+        response.send(`${bottlesLeft} bottles of beer on the wall! <br/> <a href="http://localhost:3000/${bottlesLeft}" >Take one down, pass it around.</a>`)
+    }else {
+        response.send(`${bottlesLeft} bottles of beer on the wall! <br/> <a href="http://localhost:3000/" >Take one down, pass it around.</a>`)
+    }
 })
 
 
